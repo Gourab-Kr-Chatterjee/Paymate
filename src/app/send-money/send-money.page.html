@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/dashboard">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Send Money</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="confirmPayment()">
+    <ion-item>
+      <ion-label position="floating">Amount</ion-label>
+      <ion-input [(ngModel)]="amount" name="amount" type="number" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Payment Mode</ion-label>
+      <ion-select [(ngModel)]="paymentMode" name="paymentMode" interface="popover">
+        <ion-select-option value="upi">UPI</ion-select-option>
+        <ion-select-option value="card">Card</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="paymentMode === 'card'">
+      <ion-label>Select Card</ion-label>
+      <ion-select [(ngModel)]="selectedCardNumber" name="selectedCardNumber" interface="popover">
+        <ion-select-option *ngFor="let card of cards" [value]="card.cardNumber">
+          {{ card.cardholderName }} - {{ card.cardNumber }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="full" type="submit" color="primary">Proceed to Pay</ion-button>
+  </form>
+
+  <div *ngIf="isProcessing" class="processing-icon">
+    <ion-icon name="sync" class="rotate-icon"></ion-icon>
+  </div>
+  <div *ngIf="isPaymentSuccessful" class="success-icon">
+    <ion-icon name="checkmark-done" class="large-checkmark" color="success"></ion-icon>
+  </div>
+</ion-content>

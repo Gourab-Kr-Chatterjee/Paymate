@@ -1,0 +1,56 @@
+<ion-content>
+  <div class="card-container" *ngIf="activeCard">
+    <div class="card-details">
+      <div class="card-header">
+        <img src="https://1000logos.net/wp-content/uploads/2018/03/SBI-Logo-768x432.png" alt="Bank Logo" class="bank-logo">
+      </div>
+      <div class="card-info">
+        <h3>{{ activeCard.cardholderName }}</h3>
+        <p>{{ activeCard.cardNumber }}</p>
+        <p (click)="toggleCVV()">
+          CVV: <span *ngIf="!activeCard.showCVV">***</span><span *ngIf="activeCard.showCVV">{{ activeCard.cvv }}</span>
+        </p>
+      </div>
+      <div class="card-footer">
+        <div *ngIf="activeCard.network === 'visa'">
+          <img src="https://1000logos.net/wp-content/uploads/2021/11/VISA-logo-768x432.png" alt="Visa Logo" class="card-network">
+        </div>
+        <div *ngIf="activeCard.network === 'mastercard'">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/800px-Mastercard-logo.svg.png" alt="Mastercard Logo" class="card-network">
+        </div>
+      </div>
+    </div>
+    <ion-icon name="arrow-forward-circle-outline" class="arrow-icon" (click)="toggleCard()"></ion-icon>
+  </div>
+
+  <div class="actions-container">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button expand="full" color="primary" (click)="openPayBillForm()">
+            <ion-icon slot="start" name="card-outline"></ion-icon>
+            Pay Bill
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="full" color="primary" (click)="manageCardSettings()">
+            <ion-icon slot="start" name="settings-outline"></ion-icon>
+            Manage Card
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="full" color="primary" (click)="blockCard()">
+            <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+            Block Card
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="full" color="primary" (click)="viewOffers()">
+            <ion-icon slot="start" name="pricetag-outline"></ion-icon>
+            Offers
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/cards">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Block Card</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirmBlockCard()">
+        <ion-icon name="checkmark-done-outline" color="success"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/cards">
+        <ion-icon name="close-circle" color="danger"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form>
+    <ion-item>
+      <ion-label position="floating">Choose Card</ion-label>
+      <ion-select [(ngModel)]="selectedCardNumber" name="selectedCardNumber" interface="popover">
+        <ion-select-option *ngFor="let card of cards" [value]="card.cardNumber">
+          {{ card.cardholderName }} - {{ card.cardNumber }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Enter PIN</ion-label>
+      <ion-input [(ngModel)]="pin" name="pin" type="password" placeholder="Enter PIN" inputmode="numeric" maxlength="4" clear-input></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Reason for Blocking</ion-label>
+      <ion-textarea [(ngModel)]="reason" name="reason" placeholder="Enter reason"></ion-textarea>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-icon name="call-outline" slot="start"></ion-icon>
+      <ion-label>
+        <h3>Need Assistance?</h3>
+        <p>If you need help, you can call our customer care or report an issue.</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-button expand="full" color="primary" href="tel:+1-800-123-4567">
+        <ion-icon slot="start" name="call-outline"></ion-icon>
+        Call Customer Care
+      </ion-button>
+      <ion-button expand="full" color="secondary" href="mailto:support@cardcompany.com">
+        <ion-icon slot="start" name="mail-outline"></ion-icon>
+        Report an Issue
+      </ion-button>
+    </ion-item>
+  </form>
+
+  <div *ngIf="isProcessing" class="processing-icon">
+    <ion-icon name="sync" class="rotate-icon"></ion-icon>
+  </div>
+  <div *ngIf="isBlockSuccessful" class="success-icon">
+    <ion-icon name="checkmark-circle" class="large-checkmark" color="success"></ion-icon>
+  </div>
+</ion-content>

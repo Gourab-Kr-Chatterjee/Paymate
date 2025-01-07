@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/dashboard">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Request Money</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="sendRequest()">
+    <ion-item>
+      <ion-label>Request Mode</ion-label>
+      <ion-select [(ngModel)]="requestMode" name="requestMode" interface="popover">
+        <ion-select-option value="upi">UPI</ion-select-option>
+        <ion-select-option value="bank">Bank Account</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="requestMode === 'upi'">
+      <ion-label position="floating">UPI ID</ion-label>
+      <ion-input [(ngModel)]="upiId" name="upiId" required></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="requestMode === 'upi'">
+      <ion-label position="floating">Name</ion-label>
+      <ion-input [(ngModel)]="upiName" name="upiName" required></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="requestMode === 'upi'">
+      <ion-label position="floating">Amount</ion-label>
+      <ion-input [(ngModel)]="upiAmount" name="upiAmount" type="number" required></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="requestMode === 'bank'">
+      <ion-label position="floating">Bank Account Number</ion-label>
+      <ion-input [(ngModel)]="bankAccountNumber" name="bankAccountNumber" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="requestMode === 'bank'">
+      <ion-label position="floating">IFSC Code</ion-label>
+      <ion-input [(ngModel)]="ifscCode" name="ifscCode" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="requestMode === 'bank'">
+      <ion-label position="floating">Account Holder Name</ion-label>
+      <ion-input [(ngModel)]="bankAccountHolderName" name="bankAccountHolderName" required></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="requestMode === 'bank'">
+      <ion-label position="floating">Amount</ion-label>
+      <ion-input [(ngModel)]="bankAmount" name="bankAmount" type="number" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Message</ion-label>
+      <ion-textarea [(ngModel)]="message" name="message"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="full" type="submit" color="primary">Send Request</ion-button>
+  </form>
+
+  <div *ngIf="isProcessing" class="processing-icon">
+    <ion-icon name="sync" class="rotate-icon"></ion-icon>
+  </div>
+  <div *ngIf="isRequestSuccessful" class="success-icon">
+    <ion-icon name="checkmark-done" class="large-checkmark" color="success"></ion-icon>
+  </div>
+</ion-content>

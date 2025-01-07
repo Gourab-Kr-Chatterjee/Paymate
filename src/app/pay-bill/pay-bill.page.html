@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/cards">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Pay Bill</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="confirmPayment()">
+    <ion-item>
+      <ion-label position="floating">Credit Card Number</ion-label>
+      <ion-input [(ngModel)]="activeCard.cardNumber" name="cardNumber" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Due Amount</ion-label>
+      <ion-input [(ngModel)]="dueAmount" name="dueAmount" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Enter Amount</ion-label>
+      <ion-input [(ngModel)]="paymentAmount" name="paymentAmount" type="number" required></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit" color="primary">Pay</ion-button>
+    <ion-button expand="full" color="danger" routerLink="/cards">Cancel</ion-button>
+  </form>
+
+  <div *ngIf="isProcessing" class="processing-icon">
+    <ion-icon name="sync" class="rotate-icon"></ion-icon>
+  </div>
+  <div *ngIf="isPaymentSuccessful" class="success-icon">
+    <ion-icon name="checkmark-circle" class="large-checkmark" color="success"></ion-icon>
+  </div>
+</ion-content>

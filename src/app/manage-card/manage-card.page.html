@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/cards">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Manage Card</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirmSaveSettings()">
+        <ion-icon name="checkmark-done-outline" color="success"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/cards">
+        <ion-icon name="close-circle" color="danger"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form>
+    <ion-item>
+      <ion-label position="floating">Choose Card</ion-label>
+      <ion-select [(ngModel)]="selectedCardNumber" name="selectedCardNumber" interface="popover" (ionChange)="setActiveCard()">
+        <ion-select-option *ngFor="let card of cards" [value]="card.cardNumber">
+          {{ card.cardholderName }} - {{ card.cardNumber }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Domestic Transactions</ion-label>
+      <ion-toggle [(ngModel)]="activeCard.domesticTransaction" name="domesticTransaction"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>International Transactions</ion-label>
+      <ion-toggle [(ngModel)]="activeCard.internationalTransaction" name="internationalTransaction"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Transaction Limit</ion-label>
+      <ion-input [(ngModel)]="activeCard.cardLimit" name="cardLimit" type="number" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Set Alerts</ion-label>
+      <ion-toggle [(ngModel)]="activeCard.setAlerts" name="setAlerts"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Contactless Payments</ion-label>
+      <ion-toggle [(ngModel)]="activeCard.contactlessPayments" name="contactlessPayments"></ion-toggle>
+    </ion-item>
+
+    <ion-button expand="full" color="secondary" (click)="changePin()">Change PIN</ion-button>
+  </form>
+
+  <div *ngIf="isProcessing" class="processing-icon">
+    <ion-icon name="sync" class="rotate-icon"></ion-icon>
+  </div>
+  <div *ngIf="isPinChangeSuccessful" class="success-icon">
+    <ion-icon name="checkmark-circle" class="large-checkmark" color="success"></ion-icon>
+  </div>
+</ion-content>

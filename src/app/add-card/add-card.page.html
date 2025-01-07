@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/dashboard">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Add Card</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="confirmCardDetails()">
+    <ion-item>
+      <ion-label position="floating">Card Number</ion-label>
+      <ion-input [(ngModel)]="cardNumber" name="cardNumber" type="text" (ionChange)="onCardNumberChange()" maxlength="16" required></ion-input>
+      <ion-icon *ngIf="cardType === 'visa'" name="logo-visa" slot="end"></ion-icon>
+      <ion-icon *ngIf="cardType === 'mastercard'" name="logo-mastercard" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Card Holder Name</ion-label>
+      <ion-input [(ngModel)]="cardHolderName" name="cardHolderName" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">CVV</ion-label>
+      <ion-input [(ngModel)]="cvv" name="cvv" type="password" maxlength="3" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Expiry Month</ion-label>
+      <ion-input [(ngModel)]="expiryMonth" name="expiryMonth" type="number" min="1" max="12" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Expiry Year</ion-label>
+      <ion-input [(ngModel)]="expiryYear" name="expiryYear" type="number" min="2024" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" type="submit" color="primary">Add Card</ion-button>
+  </form>
+
+  <div *ngIf="isProcessing" class="processing-icon">
+    <ion-icon name="sync" class="rotate-icon"></ion-icon>
+  </div>
+  <div *ngIf="isCardAddedSuccessfully" class="success-icon">
+    <ion-icon name="checkmark-done" class="large-checkmark" color="success"></ion-icon>
+  </div>
+</ion-content>

@@ -1,0 +1,112 @@
+ion-header {
+  --background: #6200ea;
+  color: #fff;
+}
+
+ion-content {
+  padding: 20px;
+  background: #f5f5f5;
+}
+
+.card-container {
+  position: relative;
+  background: linear-gradient(120deg, #8c897af7, #aa8e0cc7);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  color: #000;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  margin: 20px;
+}
+
+.card-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.bank-logo {
+  height: 30px;
+}
+
+.card-info {
+  margin-bottom: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.card-info h3 {
+  margin: 5px 0;
+  font-size: 1.5rem;
+}
+
+.card-info p {
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  align-items: center;
+}
+
+.card-network {
+  height: 30px;
+}
+
+.arrow-icon {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 2rem;
+  color: #000;
+  cursor: pointer;
+}
+
+.actions-container {
+  display: flex;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+}
+
+.processing-icon,
+.success-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.rotate-icon {
+  font-size: 3rem;
+  color: #28a745;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

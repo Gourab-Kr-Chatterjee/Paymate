@@ -1,0 +1,140 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css";
+
+ion-content {
+  padding-bottom: 120px; /* Ensure no overlap with the bottom nav */
+  background: linear-gradient(to bottom right, #1e1e1e, #333, #1e1e1e); /* Unified background */
+}
+
+.transaction-header {
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  background: #1e1e1e; /* Match background with content */
+}
+
+.date-range-picker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-input {
+  padding: 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  background-color: #000000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+}
+
+.transaction-summary {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background: rgb(71 71 67 / 35%); /* Match background with content */
+  border-radius: 10px;
+  margin: 10px 20px;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.summary-text {
+  margin-left: 10px;
+}
+
+.summary-text p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.summary-text h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.transactions-list {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.6); /* Blackish backdrop blur */
+  border-radius: 15px;
+  margin: 10px;
+  margin-bottom: 90px;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  backdrop-filter: blur(10px);
+  padding: 10px 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.transaction-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.transaction-icon ion-icon {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.transaction-details {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.transaction-details h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.transaction-details p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #ccc;
+}
+
+.additional-details,
+.transfer-id {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.additional-details ion-icon,
+.transfer-id ion-icon {
+  font-size: 1.2rem;
+  margin-right: 5px;
+  color: #fff;
+}
+
+.additional-details span,
+.transfer-id span {
+  font-size: 0.875rem;
+  color: #ccc;
+}
+
+.transaction-amount {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.transaction-amount.credit {
+  color: #28a745;
+}
+
+.transaction-amount.debit {
+  color: #dc3545;
+}

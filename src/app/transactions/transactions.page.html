@@ -1,0 +1,49 @@
+<ion-content>
+  <div class="transaction-header">
+    <div class="date-range-picker">
+      <input type="date" [(ngModel)]="dateRange.start" (change)="filterTransactions()" class="date-input">
+      <span>to</span>
+      <input type="date" [(ngModel)]="dateRange.end" (change)="filterTransactions()" class="date-input">
+    </div>
+  </div>
+
+  <div class="transaction-summary">
+    <div class="summary-item">
+      <ion-icon name="arrow-up-circle-outline" color="success"></ion-icon>
+      <div class="summary-text">
+        <p>Total Credit</p>
+        <h2>₹{{ totalCredit }}</h2>
+      </div>
+    </div>
+    <div class="summary-item">
+      <ion-icon name="arrow-down-circle-outline" color="danger"></ion-icon>
+      <div class="summary-text">
+        <p>Total Debit</p>
+        <h2>₹{{ totalDebit }}</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="transactions-list">
+    <div class="transaction-item animate__animated animate__fadeInUp" *ngFor="let transaction of filteredTransactions">
+      <div class="transaction-icon">
+        <ion-icon [name]="transaction.type === 'credit' ? 'arrow-up-outline' : 'arrow-down-outline'" [color]="transaction.type === 'credit' ? 'success' : 'danger'"></ion-icon>
+      </div>
+      <div class="transaction-details">
+        <h4>{{ transaction.name }}</h4>
+        <p>{{ transaction.date }}</p>
+        <div class="additional-details">
+          <ion-icon [name]="transaction.methodIcon"></ion-icon>
+          <span>{{ transaction.method }}</span>
+        </div>
+        <div class="transfer-id">
+          <ion-icon name="barcode-outline"></ion-icon>
+          <span>{{ transaction.transferId }}</span>
+        </div>
+      </div>
+      <div class="transaction-amount" [ngClass]="transaction.type">
+        ₹{{ transaction.amount }}
+      </div>
+    </div>
+  </div>
+</ion-content>

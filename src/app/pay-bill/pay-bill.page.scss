@@ -1,0 +1,40 @@
+ion-header {
+    --background: #6200ea;
+    color: #fff;
+  }
+  
+  ion-content {
+    padding: 20px;
+    background: #f5f5f5;
+  }
+  
+  .processing-icon,
+  .success-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .rotate-icon {
+    font-size: 4rem;
+    color: #28a745;
+    animation: rotate 2s linear infinite;
+  }
+  
+  .large-checkmark {
+    font-size: 5rem;
+    color: #28a745;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  @keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  

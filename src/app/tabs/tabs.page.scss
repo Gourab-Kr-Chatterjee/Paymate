@@ -1,0 +1,30 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css";
+
+.bottom-nav-bar {
+    position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); width: 90%;
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  z-index: 10;
+}
+
+ion-tabs {
+  margin-bottom: 80px; /* Adjust this value as needed */
+}
+
+ion-tab-button {
+  --color-selected: #3498db;
+  --color: #7f8c8d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ion-icon {
+  font-size: 1.5rem;
+}
+
+ion-label {
+  font-size: 0.75rem;
+}
