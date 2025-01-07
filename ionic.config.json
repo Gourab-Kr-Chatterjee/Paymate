@@ -1,0 +1,7 @@
+{
+  "name": "PayMate",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
